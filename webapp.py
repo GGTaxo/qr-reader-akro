@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import streamlit as st
 
-image = st.camera_input("Show QR code")
+image = st.camera_input("Scan QR code")
 
 def cross_check_name(qr_value):
     fixed_value = "Akrolithos_Gala_2023"
@@ -19,7 +19,7 @@ if image is not None:
 
     data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
 
-    st.write(data)
+    # st.write(data)
 
     if (cross_check_name(data)):
         st.info("PASS")
