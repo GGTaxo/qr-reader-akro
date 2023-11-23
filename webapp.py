@@ -2,13 +2,16 @@ import cv2
 import numpy as np
 import streamlit as st
 
+logo_img  = cv2.imread("logo.png")
+# st.header("AKROLITHOS SA")
+st.image(logo_img, use_column_width='auto')
 image = st.camera_input("Scan QR code")
+
 
 def cross_check_name(qr_value):
     fixed_value = "Akrolithos_Gala_2023"
     if qr_value == fixed_value:
         return True
-
 
 
 if image is not None:
@@ -22,9 +25,7 @@ if image is not None:
     # st.write(data)
 
     if (cross_check_name(data)):
-        st.info("PASS")
+        st.success("PASS", )
     else:
-        st.info("FAIL")
-
-
+        st.error("FAIL")
 
