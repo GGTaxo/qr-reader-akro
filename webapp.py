@@ -17,10 +17,15 @@ def cross_check_name(qr_value):
 if image is not None:
     bytes_data = image.getvalue()
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
+    gray_img = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
+    ret, thresh = cv2.threshold(gray_img, 228, 255, 0)
+    inv_bw_img = cv2.bitwise_not(thresh)
+    inv_gray_img = cv2.bitwise_not(gray_img)
 
     detector = cv2.QRCodeDetector()
+    # decoded_info, points, straight_qrcode = detector.detectAndDecodeMulti(cv2_img)
 
-    data, bbox, straight_qrcode = detector.detectAndDecode(cv2_img)
+    data, bbox, straight_qrcode = detector.detectAndDecode(inv_gray_img)
 
     # st.write(data)
 
