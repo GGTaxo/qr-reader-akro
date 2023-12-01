@@ -9,7 +9,9 @@ image = st.camera_input("Scan QR code")
 
 
 def cross_check_name(qr_value):
-    fixed_value = "Akrolithos_Gala_2023"
+    # fixed_value = "Akrolithos_Gala_2023"
+    fixed_value = r"https://rb.gy/mrm7mq"
+    # fixed_value = r"https://docs.google.com/forms/d/e/1FAIpQLSd_mN-_zZqgdA4f980d91OvO1Ny8k7NQGwBWHP-BT5JXjvEqA/viewform?usp=sf_link"
     if qr_value == fixed_value:
         return True
 
